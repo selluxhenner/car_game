@@ -1,0 +1,18 @@
+def fixed_point_iteration(g, x0, tol, max_iter):
+    for i in range(max_iter):
+        x1 = g(x0)
+        if abs(x1 - x0) < tol:  # Check convergence
+            return x1, i + 1
+        x0 = x1
+        print(x0)
+    return x0, max_iter  # Return last approximation if no convergence
+
+# Example: Solve x = sqrt(x + 2)
+import math
+g = lambda x: math.sqrt(x + 7)
+x0 = 9
+tol = 1e-6
+max_iter = 100
+
+solution, iterations = fixed_point_iteration(g, x0, tol, max_iter)
+print(f"Solution: {solution} found in {iterations} iterations")

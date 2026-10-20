@@ -1,0 +1,25 @@
+import matplotlib.pyplot as plt
+
+# Constants
+max_speed = 200  # Maximum speed
+acceleration_factor = 0.5  # Acceleration factor
+ACCELERATION = 0.1  # Acceleration value
+
+# Initialize variables
+speed = 0
+time_values = []
+speed_values = []
+
+# Simulate speed calculation over time (up to 4000 time units)
+for time in range(4001):  # Time from 0 to 4000
+    speed += acceleration_factor * ACCELERATION * (1 - (speed / max_speed)) ** 4
+    speed_values.append(speed)
+    time_values.append(time)
+
+# Plotting the time-speed graph based on the iterative calculation
+plt.plot(time_values, speed_values)
+plt.title('Time vs Speed (Based on the Given Equation)')
+plt.xlabel('Time')
+plt.ylabel('Speed')
+plt.grid(True)
+plt.show()
